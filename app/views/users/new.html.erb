@@ -1,3 +1,30 @@
-<h1>re-former project !</h1>
+<h1>re-former project | New User !</h1>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this useer from being saved:</h2>
+ 
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<form action="/users" method="post">
+  <input name="utf8" type="hidden" value="&#x2713;" />
 
+  <label for="username">Username:</label>
+  <input name="user[username]" id="username" type="text" />
 
+   
+  <label for="email">E-mail:</label>
+  <input name="user[email]" id="email" type="text" />
+
+  
+  <label for="password">Password:</label>
+  <input name="user[password]" id="password" type="password" /> 
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <input name="submit" type="submit" />
+</form>
