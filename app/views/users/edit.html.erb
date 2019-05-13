@@ -1,0 +1,73 @@
+<% 
+=begin %>
+<h1>re-former project | New User !</h1>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this useer from being saved:</h2>
+ 
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<form action="/users" method="post">
+  <input name="utf8" type="hidden" value="&#x2713;" />
+
+  <label for="username">Username:</label>
+  <input name="user[username]" id="username" type="text" />
+
+   
+  <label for="email">E-mail:</label>
+  <input name="user[email]" id="email" type="text" />
+
+  
+  <label for="password">Password:</label>
+  <input name="user[password]" id="password" type="password" /> 
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <input name="submit" type="submit" />
+</form>
+
+
+
+<%= form_tag("/users", method: "post") do %>
+  <%= label_tag(:username, "Username:") %>
+  <%= text_field_tag(:username) %>
+  <%= label_tag(:email, "Email:") %>
+  <%= text_field_tag(:email) %>
+  <%= label_tag(:password, "Password:") %>
+  <%= password_field_tag(:password) %>
+  <%= submit_tag("Submit") %>
+<% end %>
+<% 
+=end %>
+
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this useer from being saved:</h2>
+ 
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @user do |u| %>
+  <%= u.label :username, 'Enter your Username: ' %>
+  <%= u.text_field :username, value: "bello"%>
+
+  <%= u.label :email %>
+  <%= u.text_field :email, placeholder: "example@example.com" %>
+
+  <%= u.label :password %>
+  <%= u.password_field :password%>
+
+  <%= u.submit :submit %>
+<% end %>
