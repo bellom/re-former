@@ -1,4 +1,7 @@
+<% 
+=begin %>
 <h1>re-former project | New User !</h1>
+
 <% if @user.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this useer from being saved:</h2>
@@ -10,6 +13,7 @@
     </ul>
   </div>
 <% end %>
+
 <form action="/users" method="post">
   <input name="utf8" type="hidden" value="&#x2713;" />
 
@@ -28,3 +32,23 @@
 
   <input name="submit" type="submit" />
 </form>
+<% 
+=end %>
+
+<%= form_tag("/users", method: "post") do %>
+  <%= label_tag(:username, "Username:") %>
+  <%= text_field_tag(:username) %>
+  <%= label_tag(:email, "Email:") %>
+  <%= text_field_tag(:email) %>
+  <%= label_tag(:password, "Password:") %>
+  <%= password_field_tag(:password) %>
+  <%= submit_tag("Submit") %>
+
+
+
+
+
+
+
+
+<% end %>
