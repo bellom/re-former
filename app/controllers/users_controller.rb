@@ -4,10 +4,10 @@ class UsersController < ApplicationController
     end
 
     def create
-        # user = params["user"]
-        # @user = User.new(username: user["username"], email: user["email"], password: user["password"])
-
-        @user = User.new(username: params["username"], email: params["email"], password: params["password"])
+        new_user = params["user"]
+        @user = User.new(username: new_user["username"], email: new_user["email"], password: new_user["password"])
+        # username: params["username"], email: params["email"], password: params["password"]
+        @user = User.new(user_params)
         if @user.save
             redirect_to new_user_path
         else
