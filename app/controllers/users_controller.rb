@@ -1,3 +1,4 @@
+#user controller
 class UsersController < ApplicationController
     def new
         @user = User.new
@@ -19,6 +20,7 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
     end
 
+    
     def update
         edit_user = params["user"]
         @user = User.find(params[:id])
