@@ -8,3 +8,6 @@ Metrics/LineLength:
       - 'db/schema.rb'
 Documentation:
   Enabled: false
+  
+AllCops:
+  TargetRubyVersion: 'gemfile'
